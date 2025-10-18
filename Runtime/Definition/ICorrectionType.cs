@@ -7,6 +7,11 @@ namespace RinaCorrection.Definition {
     public interface ICorrectionType {
         
         /// <summary>
+        /// 計算時の優先度
+        /// </summary>
+        int Priority { get; }
+        
+        /// <summary>
         /// 補正値の実計算
         /// </summary>
         /// <param name="baseValue"></param>
