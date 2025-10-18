@@ -3,7 +3,7 @@ using VContainer;
 using VContainer.Unity;
 
 namespace RinaCorrection.Installer {
-    public class ManagerInstaller : IInstaller {
+    public class CorrectionManagerInstaller : IInstaller {
         public void Install(IContainerBuilder builder) {
             
             builder
