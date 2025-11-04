@@ -11,7 +11,10 @@ namespace RinaCorrection.Installer {
                 .AsImplementedInterfaces();
 
             builder
-                .Register<FixedType>(Lifetime.Transient);
+                .RegisterInstance(new FixedType());
+
+            builder
+                .RegisterInstance(new RatioType());
 
         }
     }
