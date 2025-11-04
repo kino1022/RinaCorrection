@@ -11,10 +11,12 @@ namespace RinaCorrection.Installer {
                 .AsImplementedInterfaces();
 
             builder
-                .RegisterInstance(new FixedType());
+                .RegisterInstance(new FixedType())
+                .AsSelf();
 
             builder
-                .RegisterInstance(new RatioType());
+                .RegisterInstance(new RatioType())
+                .AsSelf();
 
         }
     }

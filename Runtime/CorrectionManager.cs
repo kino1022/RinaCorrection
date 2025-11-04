@@ -67,6 +67,7 @@ namespace RinaCorrection {
         public CorrectionManager() {
             m_disposable = new  CompositeDisposable();
             m_corrections = new();
+            
             RegisterCorrectionChanged();
 
             m_corrector = new Corrector(m_corrections);
