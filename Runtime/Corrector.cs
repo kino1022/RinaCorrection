@@ -23,14 +23,15 @@ namespace RinaCorrection {
 
         public Corrector(IReadOnlyObservableList<ICorrectionValue> corrections) {
             
-            if (corrections is null || corrections.Count is 0) {
-                throw new ArgumentNullException();
-            }
-            
             m_corrections = corrections;
+            
         }
 
         public float Apply(float baseValue) {
+
+            if (m_corrections.Count is 0) {
+                return baseValue;
+            }
 
             var groupedCorrections = new Dictionary<Type, List<ICorrectionValue>>();
 
