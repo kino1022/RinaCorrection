@@ -1,13 +1,16 @@
 using System;
 using R3;
 using RinaCorrection.Definition;
+using Sirenix.Serialization;
 
 namespace RinaCorrection.Asset {
     [Serializable]
     public class TimeLimitCorrection : ICorrectionValue{
 
+        [OdinSerialize]
         private ReactiveProperty<float> m_value;
         
+        [OdinSerialize]
         private ICorrectionType m_type;
 
         private TimeSpan m_limit;

@@ -86,9 +86,9 @@ namespace RinaCorrection {
 
             if (correction is null) throw new ArgumentNullException();
             
-            RegisterValueChangeStream(correction);
-            
             m_corrections.Add(correction);
+            
+            RegisterValueChangeStream(correction);
         }
 
         public void Remove(ICorrectionValue correction) {
@@ -102,12 +102,14 @@ namespace RinaCorrection {
         }
 
         public void Clear() {
-            m_corrections.ForEach(Remove);
+            var items = new List<ICorrectionValue>(m_corrections);
+            foreach(var item in items) Remove(item);
         }
         
         public float Apply (float baseValue) => m_corrector.Apply(baseValue);
 
         private void RegisterCorrectionChanged() {
+            
             m_corrections
                 .ObserveAdd()
                 .Select(_ => Unit.Default)
@@ -136,6 +138,7 @@ namespace RinaCorrection {
         private void RegisterValueChangeStream(ICorrectionValue value) {
 
             if (value is null) {
+                Debug.Log("受け取った補正値インスタンスがnullでした");
                 throw new ArgumentNullException();
             }
             
