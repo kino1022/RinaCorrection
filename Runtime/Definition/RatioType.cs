@@ -2,7 +2,7 @@ namespace RinaCorrection.Definition {
     /// <summary>
     /// 割合での補正値分類
     /// </summary>
-    public readonly struct RatioType {
+    public readonly struct RatioType : ICorrectionType {
         
         public int Priority => 10;
 
