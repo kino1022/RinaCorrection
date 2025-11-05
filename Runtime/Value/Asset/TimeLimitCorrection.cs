@@ -38,6 +38,7 @@ namespace RinaCorrection.Asset {
         }
 
         public void Dispose() {
+            m_value.Value = 0.0f;
             m_disposable?.Dispose();
             m_release?.Dispose();
         }
@@ -47,6 +48,7 @@ namespace RinaCorrection.Asset {
                 .Timer(m_limit)
                 .Subscribe(_ => {
                     m_release.OnNext(this);
+                    m_value.Value = 0.0f;
                     Dispose();
                 })
                 .AddTo(m_disposable);
