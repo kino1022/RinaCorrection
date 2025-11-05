@@ -32,6 +32,8 @@ namespace RinaCorrection.Asset {
             m_type = type;
             
             m_value = new  ReactiveProperty<float>(value);
+
+            m_limit = limit;
             
             RegisterTimeLimit();
             
@@ -48,6 +50,7 @@ namespace RinaCorrection.Asset {
                 .Timer(m_limit)
                 .Subscribe(_ => {
                     m_release.OnNext(this);
+                    m_release.OnCompleted();
                     m_value.Value = 0.0f;
                     Dispose();
                 })
